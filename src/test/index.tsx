@@ -1,6 +1,19 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { increase } from 'reduxStore';
+import { useCounter } from 'selectors';
 
 export default () => {
-  return <Text>Test ne</Text>;
+  const dispatch = useDispatch();
+  const counter = useCounter();
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        dispatch(increase());
+      }}>
+      <Text>Test ne</Text>
+      <Text>{`Counter: ${counter}`}</Text>
+    </TouchableOpacity>
+  );
 };
