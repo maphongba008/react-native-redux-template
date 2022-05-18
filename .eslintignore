@@ -1,0 +1,5 @@
+icomoon/*
+android/app/build/*
+node_modules/**
+*/build/**
+scripts/*
