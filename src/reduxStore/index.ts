@@ -1,4 +1,5 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { appSlice } from 'app/reducer';
 import { persistReducer, persistStore } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage';
 const persistConfig = {
@@ -6,20 +7,6 @@ const persistConfig = {
   toFileName: (name: string) => name.split(':').join('-'),
   fromFileName: (name: string) => name.split('-').join(':'),
 };
-
-const initialState = {
-  counter: 0,
-};
-
-export const appSlice = createSlice({
-  name: 'app',
-  initialState,
-  reducers: {
-    increase: (state) => {
-      state.counter++;
-    },
-  },
-});
 
 const store = configureStore({
   reducer: {
@@ -39,4 +26,3 @@ const store = configureStore({
 
 export default store;
 export const persistor = persistStore(store);
-export const { increase } = appSlice.actions;

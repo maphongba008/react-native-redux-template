@@ -290,6 +290,14 @@ PODS:
     - React-Core
   - react-native-image-picker (4.8.3):
     - React-Core
+  - react-native-safe-area-context (4.2.5):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - ReactCommon/turbomodule/core
+  - react-native-splash-screen (3.3.0):
+    - React-Core
   - React-perflogger (0.68.1)
   - React-RCTActionSheet (0.68.1):
     - React-Core/RCTActionSheetHeaders (= 0.68.1)
@@ -357,9 +365,18 @@ PODS:
     - React-perflogger (= 0.68.1)
   - ReactNativeLocalization (2.3.1):
     - React-Core
+  - RNDateTimePicker (6.1.3):
+    - React-Core
   - RNDeviceInfo (8.7.1):
     - React-Core
+  - RNGestureHandler (2.4.2):
+    - React-Core
   - RNPermissions (3.3.1):
+    - React-Core
+  - RNScreens (3.13.1):
+    - React-Core
+    - React-RCTImage
+  - RNVectorIcons (9.1.0):
     - React-Core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
@@ -413,6 +430,8 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-blob-util (from `../node_modules/react-native-blob-util`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -426,8 +445,12 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeLocalization (from `../node_modules/react-native-localization`)
+  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
+  - RNScreens (from `../node_modules/react-native-screens`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -493,6 +516,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-blob-util"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
+  react-native-splash-screen:
+    :path: "../node_modules/react-native-splash-screen"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -519,10 +546,18 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeLocalization:
     :path: "../node_modules/react-native-localization"
+  RNDateTimePicker:
+    :path: "../node_modules/@react-native-community/datetimepicker"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -562,6 +597,8 @@ SPEC CHECKSUMS:
   React-logger: f79dd3cc0f9b44f5611c6c7862badd891a862cf8
   react-native-blob-util: 2d49d135d6fe1410c019fb5bff241dac7f12d73d
   react-native-image-picker: e95b4785b685cfc06609bc50ed6fb55b59990c99
+  react-native-safe-area-context: ebf8c413eb8b5f7c392a036a315eb7b46b96845f
+  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   React-perflogger: 30ab8d6db10e175626069e742eead3ebe8f24fd5
   React-RCTActionSheet: 4b45da334a175b24dabe75f856b98fed3dfd6201
   React-RCTAnimation: d6237386cb04500889877845b3e9e9291146bc2e
@@ -575,8 +612,12 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 7285b499d0339104b2813a1f58ad1ada4adbd6c0
   ReactCommon: bf2888a826ceedf54b99ad1b6182d1bc4a8a3984
   ReactNativeLocalization: 076497d7ca70341c751cd3b3e7c86187332a182d
+  RNDateTimePicker: 04b805a3cb4d386e5e6aff54b47ace7bad706fda
   RNDeviceInfo: aad3c663b25752a52bf8fce93f2354001dd185aa
+  RNGestureHandler: 61628a2c859172551aa2100d3e73d1e57878392f
   RNPermissions: 34d678157c800b25b22a488e4d8babb57456e796
+  RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
+  RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 17cd9a50243093b547c1e539c749928dd68152da
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

@@ -17,6 +17,10 @@ const strings = new LocalizedStrings({
       open_settings: 'Open settings',
       not_now: 'Not now',
     },
+    tabs: {
+      tab1: 'Tab 1',
+      tab2: 'Tab 2',
+    },
   },
 });
 

@@ -16,18 +16,6 @@ const Toast = {
       text2: message,
     });
   },
-  showForResponse: (response: any, successMessage?: string): boolean => {
-    if (!response) {
-      return false;
-    }
-    const { isSuccess, message } = response.payload;
-    if (isSuccess) {
-      successMessage && Toast.show({ message: successMessage });
-    } else {
-      Toast.error({ message });
-    }
-    return isSuccess;
-  },
 };
 
 export default Toast;

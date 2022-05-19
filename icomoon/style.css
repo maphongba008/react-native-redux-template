@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?skv35g');
+  src:  url('fonts/icomoon.eot?skv35g#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?skv35g') format('truetype'),
+    url('fonts/icomoon.woff?skv35g') format('woff'),
+    url('fonts/icomoon.svg?skv35g#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bookmark:before {
+  content: "\e900";
+  color: #ff6950;
+}
+.icon-box:before {
+  content: "\e901";
+  color: #f00;
+}
+.icon-cake:before {
+  content: "\e902";
+  color: #888;
+}
+.icon-camera:before {
+  content: "\e903";
+  color: #f00;
+}
+.icon-check-circle:before {
+  content: "\e904";
+  color: #f00;
+}
+.icon-check-mark:before {
+  content: "\e905";
+  color: #ff6950;
+}
+.icon-check-point:before {
+  content: "\e906";
+  color: #888;
+}
+.icon-close:before {
+  content: "\e907";
+  color: #ff6950;
+}
+.icon-clothes:before {
+  content: "\e908";
+  color: #ff6950;
+}
+.icon-colors:before {
+  content: "\e909";
+  color: #ff6950;
+}
+.icon-cup:before {
+  content: "\e90a";
+  color: #ff6950;
+}
+.icon-entertainment:before {
+  content: "\e90b";
+  color: #ff6950;
+}
+.icon-lifestyle:before {
+  content: "\e90c";
+  color: #ff6950;
+}
+.icon-logout:before {
+  content: "\e90d";
+  color: #f00;
+}
+.icon-person-add:before {
+  content: "\e90e";
+  color: #ff6950;
+}
+.icon-person-remove:before {
+  content: "\e90f";
+  color: #ff6950;
+}
+.icon-plus-circle:before {
+  content: "\e910";
+  color: #ff6950;
+}
+.icon-sad:before {
+  content: "\e911";
+  color: #ff6950;
+}
+.icon-search:before {
+  content: "\e912";
+  color: #888;
+}
+.icon-sort:before {
+  content: "\e913";
+  color: #ff6950;
+}
+.icon-unbookmark:before {
+  content: "\e914";
+  color: #f00;
+}
+.icon-bell:before {
+  content: "\e915";
+  color: #ff6950;
+}
+.icon-block:before {
+  content: "\e916";
+  color: #eb3b5a;
+}
+.icon-calendar:before {
+  content: "\e917";
+  color: #888;
+}
+.icon-cart:before {
+  content: "\e918";
+  color: #888;
+}
+.icon-dashboard:before {
+  content: "\e919";
+  color: #ff6950;
+}
+.icon-edit:before {
+  content: "\e91a";
+  color: #f00;
+}
+.icon-gift:before {
+  content: "\e91b";
+  color: #ff6950;
+}
+.icon-hambuger:before {
+  content: "\e91c";
+  color: #ff6950;
+}
+.icon-heart:before {
+  content: "\e91d";
+  color: #ff6950;
+}
+.icon-people:before {
+  content: "\e91e";
+  color: #ff6950;
+}
+.icon-person:before {
+  content: "\e91f";
+  color: #ff6950;
+}
+.icon-trash:before {
+  content: "\e920";
+  color: #f00;
+}

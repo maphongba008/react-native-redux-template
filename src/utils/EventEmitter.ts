@@ -5,6 +5,8 @@ export enum EventTypes {
   SHOW_ALERT,
   SHOW_ACTION_SHEET,
   CHANGE_THEME,
+  SHOW_HUD,
+  HIDE_HUD,
 }
 
 interface Event {

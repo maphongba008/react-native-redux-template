@@ -4,16 +4,18 @@ import { hasNotch } from 'react-native-device-info';
 const isX = hasNotch();
 const isAndroid = Platform.OS === 'android';
 export const LightTheme = {
-  statusBar: '#000000', // color of status bar on android
+  statusBar: '#FF0000', // color of status bar on android
   navigationBar: '#000000', // background of header (1)
   backgroundColor: '#FFFFFF', // main background color (2)
   backgroundSecondaryColor: '#F7F7F7', // background color for selected item, section separator (3)
   primaryText: '#000000', // main text color (4), and button background color
   secondaryText: '#9A9A9A', // secondary text color (5)
   //
-  iconSecondary: '#9A9A9A', // icon color (7)
+  primaryIcon: '#9A9A9A', // icon color (7)
+  secondaryIcon: '#9A9A9A', // icon color (7)
   navigationText: '#FFFFFF', // header title color (8)
   //
+  brandPrimary: '#F26F21',
   borderOrDisabled: '#E6E6E6', // border, horizontal line (10)
   placeholder: 'rgba(0, 0, 0, .25)', // input placeholder text color (11)
   errorText: '#d84315', // input error text color (12)
@@ -110,9 +112,9 @@ export const dimensions = {
 };
 
 export const fonts = {
-  regular: 'Roboto-Regular',
-  medium: 'Roboto-Medium',
-  bold: 'Roboto-Bold',
+  regular: 'System',
+  medium: 'System',
+  bold: 'System',
 };
 
 export type Font = typeof fonts;

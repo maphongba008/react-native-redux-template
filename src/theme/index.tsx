@@ -25,7 +25,7 @@ export const useTheme = () => {
   return React.useContext(ThemeContext);
 };
 
-const Provider = ({ children }: { theme: ThemeName; children: any }) => {
+const Provider = ({ children }: { children: any }) => {
   const [theme, setTheme] = React.useState<Theme>({ ...defaultTheme, colors: LightTheme });
   React.useEffect(() => {
     const changeTheme = (colors: any) => {
