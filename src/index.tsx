@@ -1,7 +1,7 @@
 import React from 'react';
 import Toast from 'react-native-toast-message';
 import { Provider } from 'react-redux';
-import { Box, LoadingHudProvider } from 'components';
+import { ActionSheet, Box, LoadingHudProvider } from 'components';
 import Navigation from 'navigation';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from 'reduxStore';
@@ -18,6 +18,7 @@ export default () => {
             <Navigation />
             <LoadingHudProvider />
             <Toast />
+            <ActionSheet.Provider />
           </Box>
         </ThemeProvider>
       </PersistGate>

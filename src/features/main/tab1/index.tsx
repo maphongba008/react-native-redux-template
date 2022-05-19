@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Box, Container, Header, LoadingHud, Text, TouchableOpacity } from 'components';
+import { ActionSheet, Box, Container, Header, LoadingHud, Text, TouchableOpacity } from 'components';
 import { Theme, useTheme } from 'theme';
 import Toast from 'utils/Toast';
 
@@ -27,6 +27,22 @@ const Tab1Screen = ({ ...props }: Tab1ScreenProps) => {
           });
         }}>
         <Text>Show Toast</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          ActionSheet.show({
+            title: 'Choose option',
+            buttons: [
+              {
+                text: 'Option 1',
+              },
+              {
+                text: 'Option 2',
+              },
+            ],
+          });
+        }}>
+        <Text>Show action sheet</Text>
       </TouchableOpacity>
     </Container>
   );
