@@ -1,6 +1,5 @@
 import React from 'react';
 import { ActivityIndicator, Animated, Dimensions } from 'react-native';
-import { Theme, useTheme } from 'theme';
 import EventEmitter, { EventTypes } from 'utils/EventEmitter';
 
 import { BackHandler } from './BackHandler';
@@ -21,7 +20,6 @@ export const LoadingHud = {
 export const LoadingHudProvider = () => {
   const [isFinishAnimation, setAnimationFinish] = React.useState(false);
   const animation = React.useRef(new Animated.Value(0)).current;
-  const styles = makeStyles(useTheme());
   const [hudCount, setHudCount] = React.useState(0);
   React.useEffect(() => {
     const increaseHudCount = () => {
@@ -89,22 +87,21 @@ export const LoadingHudProvider = () => {
   );
 };
 
-const makeStyles = (_theme: Theme) =>
-  StyleSheet.create({
-    container: {
-      ...StyleSheet.absoluteFillObject,
-      elevation: 2,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    popup: {
-      padding: 20,
-      // borderRadius: 10,
-      // backgroundColor: color.white,
-    },
-    loadingText: {
-      color: '#FFF',
-      marginTop: 8,
-      fontSize: 20,
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    elevation: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  popup: {
+    padding: 20,
+    // borderRadius: 10,
+    // backgroundColor: color.white,
+  },
+  loadingText: {
+    color: '#FFF',
+    marginTop: 8,
+    fontSize: 20,
+  },
+});

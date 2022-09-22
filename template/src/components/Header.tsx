@@ -1,7 +1,8 @@
 import React from 'react';
+import { dimensions } from 'constants/dimensions';
 import RootNavigation from 'navigation/RootNavigation';
 import { useStyles } from 'selectors/hooks';
-import { Theme } from 'theme';
+import { Theme } from 'types';
 
 import { Box } from './Box';
 import { Icon } from './Icon';
@@ -11,7 +12,6 @@ import { TouchableOpacity } from './TouchableOpacity';
 
 type HeaderProps = {
   title?: string;
-  titleId?: string;
   separator?: boolean;
   backEnabled?: boolean;
   leftIcon?: string;
@@ -29,7 +29,6 @@ export const Header = ({
   title,
   onPressLeft,
   onPressRight,
-  titleId,
   separator = true,
   leftIconStyle,
   rightIconStyle,
@@ -43,24 +42,24 @@ export const Header = ({
 
   const styles = useStyles(makeStyles);
   return (
-    <Box style={[styles.header, separator ? styles.separator : undefined]}>
+    <Box borderBottom={separator} style={[styles.header, undefined]}>
       <TouchableOpacity activeOpacity={0.7} disabled={!leftIcon} onPress={onPressLeft} style={styles.leftButton}>
-        {!!leftIcon && <Icon f22 primary style={[styles.leftIcon, leftIconStyle]} name={leftIcon} />}
+        {!!leftIcon && <Icon f18 primary style={[styles.leftIcon, leftIconStyle]} name={leftIcon} />}
       </TouchableOpacity>
       {!!children && children}
       {!children && (
-        <Text text={title} id={titleId} primary medium numberOfLines={2} style={[styles.titleText]}>
+        <Text primary bold numberOfLines={2} style={[styles.titleText]}>
           {title}
         </Text>
       )}
       <TouchableOpacity activeOpacity={0.7} disabled={!rightIcon} onPress={onPressRight} style={styles.rightButton}>
-        {!!rightIcon && <Icon f22 primary name={rightIcon} style={[styles.rightIcon, rightIconStyle]} />}
+        {!!rightIcon && <Icon f18 primary name={rightIcon} style={[styles.rightIcon, rightIconStyle]} />}
       </TouchableOpacity>
     </Box>
   );
 };
 
-const makeStyles = ({ colors, dimensions }: Theme) =>
+const makeStyles = (colors: Theme) =>
   StyleSheet.create({
     header: {
       height: dimensions.navBar,
@@ -89,10 +88,9 @@ const makeStyles = ({ colors, dimensions }: Theme) =>
       flex: 1,
       fontSize: 18,
       lineHeight: 22,
-      color: colors.navigationText,
     },
     separator: {
-      borderBottomColor: colors.borderOrDisabled,
+      borderBottomColor: colors.border,
       borderBottomWidth: 1,
     },
   });

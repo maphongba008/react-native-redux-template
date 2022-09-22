@@ -1508,13 +1508,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native@^0.67.7":
-  version "0.67.14"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.67.14.tgz#011d9d814067f91f41de7b3b618c7b96a9fc5a8f"
-  integrity sha512-wAMGueaLav3OAhe62ivJ2FDcaYkOc4UGeCNPgxm0FXJotV4dRxpc5HxAvLkBnxH7CWqYhND94DHn4Mb8aHJIZg==
-  dependencies:
-    "@types/react" "^17"
-
 "@types/react-test-renderer@^18.0.0":
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-18.0.0.tgz#7b7f69ca98821ea5501b21ba24ea7b6139da2243"
@@ -1526,15 +1519,6 @@
   version "18.0.20"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.20.tgz#e4c36be3a55eb5b456ecf501bd4a00fd4fd0c9ab"
   integrity sha512-MWul1teSPxujEHVwZl4a5HxQ9vVNsjTchVA+xRqv/VYGCuKGAU6UhfrTdF5aBefwD1BHUD8i/zq+O/vyCm/FrA==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^17":
-  version "17.0.50"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.50.tgz#39abb4f7098f546cfcd6b51207c90c4295ee81fc"
-  integrity sha512-ZCBHzpDb5skMnc1zFXAXnL3l1FAdi+xZvwxK+PkglMmBrwjpp9nKaWuEvrGnSifCJmBFGxZOOFuwC6KH/s0NuA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -5905,10 +5889,10 @@ react-native-config@^1.4.5:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.4.6.tgz#2aefebf4d9cf02831e64bbc1307596bd212f6d42"
   integrity sha512-cSLdOfva2IPCxh6HjHN1IDVW9ratAvNnnAUx6ar2Byvr8KQU7++ysdFYPaoNVuJURuYoAKgvjab8ZcnwGZIO6Q==
 
-react-native-device-info@^8.7.1:
-  version "8.7.1"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-8.7.1.tgz#fbb06f87dbbc4423abe713874699fb2e6e99fd15"
-  integrity sha512-cVMZztFa2Qn6qpQa601W61CtUwZQ1KXfqCOeltejAWEXmgIWivC692WGSdtGudj4upSi1UgMSaGcvKjfcpdGjg==
+react-native-device-info@^10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-10.2.0.tgz#be17a1b86cabbe53f4adde96b662204784d3cefd"
+  integrity sha512-7VycjFGaLKIZLDwCxSK5cWZdDOGqz3QxdGF57B/a4bW3gkrUFa5Gf0v7fUR9YL/VBJM0UwDiDH7pR9hkMQt+vw==
 
 react-native-fast-image@^8.5.11:
   version "8.6.1"

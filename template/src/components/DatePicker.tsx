@@ -1,8 +1,10 @@
 import React from 'react';
 import { Modal, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { dimensions } from 'constants/dimensions';
 import { strings } from 'localization';
-import { Theme, useTheme } from 'theme';
+import { useTheme } from 'selectors';
+import { Theme } from 'types';
 import { DateUtils } from 'utils/DateUtils';
 
 import { Box } from './Box';
@@ -31,7 +33,13 @@ export const DatePicker = ({ date, onDateSelected, ...props }: Props) => {
     onDateSelected(DateUtils.addDate(date, 1));
   }, [date, onDateSelected]);
   return (
-    <TouchableOpacity horizontal centerVertical {...props} onPress={openPicker} style={[styles.container, props.style]}>
+    <TouchableOpacity
+      borderBottom
+      horizontal
+      centerVertical
+      {...props}
+      onPress={openPicker}
+      style={[styles.container, props.style]}>
       <TouchableOpacity onPress={onPrevPress} style={styles.iconButton}>
         <Icon name="icon-date-arrow-left" style={styles.icon} />
       </TouchableOpacity>
@@ -90,9 +98,9 @@ export const DatePickerModal = ({ onClose, visible, date, onDateSelected }: Date
     <Modal transparent visible={visible} animationType="slide" onRequestClose={onClose}>
       <Box full style={styles.dateContainer}>
         <TouchableOpacity full activeOpacity={1} onPress={onClose} />
-        <Box style={styles.doneContainer}>
+        <Box borderBottom borderTop style={styles.doneContainer}>
           <TouchableOpacity style={styles.doneButton} onPress={onDonePress}>
-            <Text f15 style={styles.doneText}>
+            <Text f16 style={styles.doneText}>
               {strings.common.done}
             </Text>
           </TouchableOpacity>
@@ -111,13 +119,11 @@ export const DatePickerModal = ({ onClose, visible, date, onDateSelected }: Date
   );
 };
 
-const makeStyle = ({ colors, dimensions }: Theme) =>
+const makeStyle = (colors: Theme) =>
   StyleSheet.create({
     container: {
       height: 75,
       paddingHorizontal: dimensions.large,
-      borderBottomWidth: 1,
-      borderBottomColor: colors.borderOrDisabled,
     },
     iconButton: {
       paddingHorizontal: dimensions.large,
@@ -136,11 +142,6 @@ const makeStyle = ({ colors, dimensions }: Theme) =>
       backgroundColor: colors.backgroundColor,
     },
     doneContainer: {
-      backgroundColor: colors.backgroundSecondaryColor,
-      borderTopWidth: 1,
-      borderBottomWidth: 1,
-      borderTopColor: colors.borderOrDisabled,
-      borderBottomColor: colors.borderOrDisabled,
       flexDirection: 'row',
       justifyContent: 'flex-end',
     },

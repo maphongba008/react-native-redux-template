@@ -7,8 +7,7 @@ import {
   SectionListProps as SLP,
   StyleSheet,
 } from 'react-native';
-import { useStyles } from 'selectors/hooks';
-import { Theme, useTheme } from 'theme';
+import { dimensions } from 'constants/dimensions';
 
 import { Box } from './Box';
 import { Icon } from './Icon';
@@ -37,7 +36,6 @@ type SectionListProps<T> = {
 } & SLP<T>;
 
 const EmptyView = ({ emptyOption }: { emptyOption?: EmptyOption }) => {
-  const styles = useStyles(makeStyles);
   if (!emptyOption) {
     return null;
   }
@@ -45,12 +43,12 @@ const EmptyView = ({ emptyOption }: { emptyOption?: EmptyOption }) => {
     <Box full center>
       {!!emptyOption.image && <Icon name={emptyOption.image} />}
       {!!emptyOption.text && (
-        <Text center medium f28 style={styles.text}>
+        <Text center bold f18 style={styles.text}>
           {emptyOption.text}
         </Text>
       )}
       {!!emptyOption.description && (
-        <Text center f15 style={styles.text}>
+        <Text center f16 style={styles.text}>
           {emptyOption.description}
         </Text>
       )}
@@ -65,7 +63,6 @@ export const SectionList = <T extends unknown>({
   emptyOption,
   ...props
 }: SectionListProps<T>) => {
-  const styles = makeStyles(useTheme());
   if (isLoading) {
     if (loadingComponent) {
       return (
@@ -95,7 +92,6 @@ export const List = <T extends unknown>(props: FlatListProps<T>) => {
   if (typeof props.children !== 'function') {
     throw new Error('Children must be a function');
   }
-  const styles = makeStyles(useTheme());
   const { emptyOption, isLoading, loadingComponent, loadingText } = props;
   if (isLoading) {
     if (loadingComponent) {
@@ -125,13 +121,12 @@ export const List = <T extends unknown>(props: FlatListProps<T>) => {
   );
 };
 
-const makeStyles = ({ dimensions }: Theme) =>
-  StyleSheet.create({
-    text: {
-      marginTop: dimensions.normal,
-      marginHorizontal: dimensions.xLarge,
-    },
-    container: {
-      flexGrow: 1,
-    },
-  });
+const styles = StyleSheet.create({
+  text: {
+    marginTop: dimensions.normal,
+    marginHorizontal: dimensions.xLarge,
+  },
+  container: {
+    flexGrow: 1,
+  },
+});

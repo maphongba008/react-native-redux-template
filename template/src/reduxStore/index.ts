@@ -14,6 +14,7 @@ const store = configureStore({
       {
         ...persistConfig,
         key: 'app',
+        whitelist: [],
       },
       appSlice.reducer,
     ),

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, ViewStyle } from 'react-native';
-import { Theme, useTheme } from 'theme';
+import { dimensions } from 'constants/dimensions';
+import { useTheme } from 'selectors';
+import { Theme } from 'types';
 
 import { Box } from './Box';
 import { Icon } from './Icon';
@@ -50,7 +52,7 @@ export const DropdownList = ({ items, currentItem, style, onChooseItem }: Props)
   return (
     <Box ref={ref} onLayout={onLayout} style={[styles.container, style]}>
       <TouchableOpacity onPress={() => setVisible(true)} horizontal centerVertical style={styles.button}>
-        <Text numberOfLines={1} f12 medium style={styles.name}>
+        <Text numberOfLines={1} f16 bold style={styles.name}>
           {currentItem.name}
         </Text>
         <Icon style={styles.chevronIcon} name="icon-arrow-down" />
@@ -97,7 +99,7 @@ const DropdownModal = ({ visible, onChooseItem, onClose, position, items }: Drop
           <List data={items} ItemSeparatorComponent={() => <Separator />}>
             {(item: Item) => (
               <TouchableOpacity style={styles.itemView} onPress={onItemPress(item)}>
-                <Text f12 medium numberOfLines={2}>
+                <Text f16 bold numberOfLines={2}>
                   {item.name}
                 </Text>
               </TouchableOpacity>
@@ -109,11 +111,11 @@ const DropdownModal = ({ visible, onChooseItem, onClose, position, items }: Drop
   );
 };
 
-const makeStyles = ({ dimensions, colors, sharedStyle }: Theme) =>
+const makeStyles = (colors: Theme) =>
   StyleSheet.create({
     container: {
       borderWidth: 1,
-      borderColor: colors.borderOrDisabled,
+      borderColor: colors.border,
       borderRadius: dimensions.radius,
       // alignSelf: 'flex-start',
       zIndex: 2,
@@ -130,10 +132,10 @@ const makeStyles = ({ dimensions, colors, sharedStyle }: Theme) =>
       flex: 1,
     },
     popup: {
-      ...sharedStyle.shadow,
+      // ...sharedStyle.shadow,
       position: 'absolute',
       borderWidth: 1,
-      borderColor: colors.borderOrDisabled,
+      borderColor: colors.border,
     },
     itemView: {
       paddingVertical: dimensions.normal,

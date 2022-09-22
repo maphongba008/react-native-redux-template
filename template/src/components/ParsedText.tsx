@@ -1,8 +1,7 @@
 import React from 'react';
 import { TextStyle } from 'react-native';
 import RNParsedText from 'react-native-parsed-text';
-import { Theme, useTheme } from 'theme';
-import { fonts } from 'theme/themes';
+import { fonts } from 'constants/fonts';
 import LinkingUtils from 'utils/LinkingUtils';
 
 import { StyleSheet } from './StyleSheet';
@@ -14,7 +13,6 @@ type ParsedTextProps = {
   onPress?: (url: string) => any;
 };
 export const ParsedText = ({ children, style, onPress, highlightStyle }: ParsedTextProps) => {
-  const styles = makeStyles(useTheme());
   const renderText = React.useCallback((text: string) => {
     if (!text || text.length === 0) {
       return '';
@@ -39,13 +37,12 @@ export const ParsedText = ({ children, style, onPress, highlightStyle }: ParsedT
     </RNParsedText>
   );
 };
-const makeStyles = ({ colors, dimensions }: Theme) =>
-  StyleSheet.create({
-    highlight: {
-      textDecorationLine: 'underline',
-      color: 'green',
-    },
-    text: {
-      fontFamily: fonts.regular,
-    },
-  });
+const styles = StyleSheet.create({
+  highlight: {
+    textDecorationLine: 'underline',
+    color: 'green',
+  },
+  text: {
+    fontFamily: fonts.regular,
+  },
+});

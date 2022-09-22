@@ -3,7 +3,7 @@ import { BackHandler as BH } from 'react-native';
 
 type BackHandlerProps = {
   // return true if you want to prevent default onBack
-  onBack?: () => boolean | void;
+  onBack?: () => boolean | undefined;
   disabled?: boolean;
 };
 
@@ -20,8 +20,7 @@ export const BackHandler = (props: BackHandlerProps) => {
       return true;
     }
     if (onBack) {
-      onBack();
-      return true;
+      return onBack();
     }
     return false;
   };

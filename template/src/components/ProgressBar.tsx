@@ -1,6 +1,7 @@
 import React from 'react';
 import { ViewStyle } from 'react-native';
-import { Theme, useTheme } from 'theme';
+import { useTheme } from 'selectors';
+import { Theme } from 'types';
 
 import { Box } from './Box';
 import { StyleSheet } from './StyleSheet';
@@ -18,7 +19,7 @@ export const ProgressBar = ({ progress, style, ...props }: ProgressBarProps) => 
     </Box>
   );
 };
-const makeStyles = ({ colors }: Theme) =>
+const makeStyles = (colors: Theme) =>
   StyleSheet.create({
     container: {
       height: 8,

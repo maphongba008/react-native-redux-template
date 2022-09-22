@@ -18,7 +18,7 @@ const show = (option: Option) => {
 };
 
 const Provider = () => {
-  const ref = React.useRef<any>();
+  const ref = React.useRef<AS | null>(null);
   const [option, setOption] = React.useState<Option>();
   React.useEffect(() => {
     const showActionSheet = ({ option: _option }: { option: Option }) => {
@@ -40,7 +40,6 @@ const Provider = () => {
   const { title, buttons } = option;
   return (
     <AS
-      // @ts-ignore
       ref={ref}
       title={title}
       options={[...buttons.map((e) => e.text), strings.common.cancel]}

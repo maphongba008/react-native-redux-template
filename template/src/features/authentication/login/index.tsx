@@ -1,13 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { setLogin } from 'app/reducer';
-import { Box, Container, Header, Text, TouchableOpacity } from 'components';
-import { Theme, useTheme } from 'theme';
+import { Container, Header, Text, TouchableOpacity } from 'components';
 
-type LoginScreenProps = {};
-const LoginScreen = ({ ...props }: LoginScreenProps) => {
-  const styles = makeStyles(useTheme());
+const LoginScreen = () => {
   console.log('render login screen');
   const dispatch = useDispatch();
   return (
@@ -22,8 +18,4 @@ const LoginScreen = ({ ...props }: LoginScreenProps) => {
     </Container>
   );
 };
-const makeStyles = ({ _colors }: Theme) =>
-  StyleSheet.create({
-    container: {},
-  });
 export default LoginScreen;

@@ -12,7 +12,7 @@ const names = data.icons.map((icon) => icon.properties.name);
 
 console.log(names);
 
-const contentToWrite = `export type IconNames = ${names.map((name) => `'${name}'`).join(' | \n ')}`;
+const contentToWrite = `export type IconNames = ${names.map((name) => "'" + name + "'").join(' | \n ')}`;
 
 const destination = 'src/components/IconNames.tsx';
 

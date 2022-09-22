@@ -1,54 +1,65 @@
 import React from 'react';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Box, Icon, IconNames, StyleSheet, Text, TouchableOpacity } from 'components';
+import { dimensions } from 'constants/dimensions';
 import { strings } from 'localization';
-import { Theme, useTheme } from 'theme';
-import { Screens } from 'types/enums';
 import { AppTabParams } from 'types/navigation';
-
-type Tab = {
-  name: string;
-  icon?: IconNames;
-  target: keyof AppTabParams;
-};
-
-const Tabs: Record<string, Tab> = {
-  Tab1: {
-    name: strings.tabs.tab1,
-    icon: 'dashboard',
-    target: Screens.TAB_1,
-  },
-  Tab2: {
-    name: strings.tabs.tab2,
-    icon: 'cart',
-    target: Screens.TAB_2,
-  },
-};
 
 type Props = BottomTabBarProps;
 
-const Tabbar = (props: Props) => {
-  const styles = makeStyle(useTheme());
-  const currentTab = props.state.routeNames[props.state.index];
-  const onTabPress = (target: string) => {
-    return () => {
-      props.navigation.navigate(target);
-    };
-  };
+const Tabs: Record<keyof AppTabParams, { name: string; icon: IconNames }> = {
+  tab1: {
+    name: strings.tabs.tab1,
+    icon: 'dashboard',
+  },
+  tab2: {
+    name: strings.tabs.tab2,
+    icon: 'cart',
+  },
+};
+
+const TabBar = ({ navigation, state, descriptors }: Props) => {
   return (
     <Box horizontal style={styles.container}>
-      {Object.values(Tabs).map((tab) => {
-        const isSelected = tab.target === currentTab;
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
+
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            // The `merge: true` option makes sure that the params inside the tab screen are preserved
+            navigation.navigate({ name: route.name, merge: true, params: {} });
+          }
+        };
+        const name = route.name as keyof AppTabParams;
+        const icon = Tabs[name].icon;
         return (
-          <TouchableOpacity onPress={onTabPress(tab.target)} key={tab.target} center style={styles.tab}>
-            <Box center>
-              {!!tab.icon && (
-                <Icon f24 brandPrimary={isSelected} secondary={!isSelected} name={tab.icon} style={styles.icon} />
-              )}
-              <Text f12 style={[styles.text, isSelected && styles.textSelected]}>
-                {tab.name}
-              </Text>
-            </Box>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            center
+            style={styles.tab}
+            full>
+            <Text primary brandPrimary={isFocused} f16>
+              {label}
+            </Text>
+            <Icon style={styles.icon} f18 name={icon} primary brandPrimary={isFocused} />
           </TouchableOpacity>
         );
       })}
@@ -56,37 +67,16 @@ const Tabbar = (props: Props) => {
   );
 };
 
-export default Tabbar;
+export default TabBar;
 
-const makeStyle = ({ colors, dimensions }: Theme) =>
-  StyleSheet.create({
-    container: {
-      borderTopWidth: 1,
-      borderTopColor: colors.borderOrDisabled,
-      paddingBottom: dimensions.paddingBottom,
-      backgroundColor: colors.backgroundColor,
-    },
-    tab: {
-      flex: 1,
-      paddingVertical: dimensions.large,
-    },
-    text: {
-      color: colors.secondaryText,
-    },
-    textSelected: {
-      color: colors.brandPrimary,
-    },
-    indicator: {
-      width: 16,
-      height: 16,
-      backgroundColor: colors.primaryText,
-      borderRadius: 8,
-      position: 'absolute',
-      right: 0,
-      top: -8,
-    },
-    indicatorText: {
-      color: '#FFF',
-    },
-    icon: {},
-  });
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: dimensions.paddingBottom,
+  },
+  tab: {
+    marginVertical: dimensions.large,
+  },
+  icon: {
+    marginTop: dimensions.normal,
+  },
+});

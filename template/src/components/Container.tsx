@@ -1,6 +1,8 @@
 import React from 'react';
-import { Platform, StatusBar, ViewStyle } from 'react-native';
-import { Theme, useTheme } from 'theme';
+import { ViewStyle } from 'react-native';
+import { dimensions } from 'constants/dimensions';
+import { useTheme } from 'selectors';
+import { Theme } from 'types';
 
 import { Box, BoxProps } from './Box';
 import { StyleSheet } from './StyleSheet';
@@ -11,17 +13,10 @@ type Props = {
   statusBarStyle?: ViewStyle;
 } & BoxProps;
 
-const isAndroid = Platform.OS === 'android';
-
 export const Container = ({ noStatusBar, statusBarStyle, hasFooter, ...props }: Props) => {
   const styles = makeStyle(useTheme());
-  const darkContentStatusBar = ['#FFF', '#FFFFFF', 'transparent'];
-  const darkContent = isAndroid
-    ? false
-    : noStatusBar || darkContentStatusBar.includes(statusBarStyle?.backgroundColor?.toString() || '');
   return (
     <Box full {...props} style={[styles.container, props.style]}>
-      <StatusBar barStyle={darkContent ? 'dark-content' : 'light-content'} />
       {!noStatusBar && <Box style={[styles.statusBar, statusBarStyle]} />}
       {props.children}
       {hasFooter && <Box style={styles.footer} />}
@@ -29,14 +24,14 @@ export const Container = ({ noStatusBar, statusBarStyle, hasFooter, ...props }: 
   );
 };
 
-const makeStyle = ({ colors, dimensions }: Theme) =>
+const makeStyle = (colors: Theme) =>
   StyleSheet.create({
     container: {
       backgroundColor: colors.backgroundColor,
     },
     statusBar: {
       height: dimensions.statusBarHeight,
-      backgroundColor: colors.statusBar,
+      backgroundColor: colors.backgroundColor,
     },
     footer: {
       height: dimensions.paddingBottom,

@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { defaultTheme } from 'constants/theme';
 import { Action, AppState } from 'types';
 
 const initialState: AppState = {
   counter: 0,
   isLoggedIn: false,
+  theme: defaultTheme,
 };
 
 export const appSlice = createSlice({

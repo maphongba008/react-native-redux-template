@@ -1,19 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Box, Container, Header } from 'components';
-import { Theme, useTheme } from 'theme';
+import { Container, Header } from 'components';
 
-type Tab2ScreenProps = {};
-const Tab2Screen = ({ ...props }: Tab2ScreenProps) => {
-  const styles = makeStyles(useTheme());
+const Tab2Screen = () => {
   return (
     <Container>
       <Header title="Tab 2" />
     </Container>
   );
 };
-const makeStyles = ({ colors, dimensions }: Theme) =>
-  StyleSheet.create({
-    container: {},
-  });
 export default Tab2Screen;

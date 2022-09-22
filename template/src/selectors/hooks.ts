@@ -1,7 +1,8 @@
 import React from 'react';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import _ from 'lodash';
-import { Theme, useTheme } from 'theme';
+import { useTheme } from 'selectors';
+import { Theme } from 'types';
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
 export const useStyles = <T extends NamedStyles<T> | NamedStyles<any>>(makeStyles: (_: Theme) => T) => {
