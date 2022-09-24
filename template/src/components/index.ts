@@ -7,6 +7,7 @@ export * from './DropdownList';
 export * from './Header';
 export * from './Icon';
 export * from './IconNames';
+export * from './Input';
 export * from './KeyboardAvoidingView';
 export * from './LoadingHud';
 export * from './ParsedText';

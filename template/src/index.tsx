@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import Toast from 'react-native-toast-message';
 import { Provider } from 'react-redux';
 import { ActionSheet, Box, LoadingHudProvider } from 'components';
+import { Dialog } from 'components/Dialog';
 import Navigation from 'navigation';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from 'reduxStore';
@@ -17,8 +18,9 @@ export default () => {
         <Box full>
           <Navigation />
           <LoadingHudProvider />
-          <Toast />
           <ActionSheet.Provider />
+          <Dialog.Provider />
+          <Toast />
         </Box>
       </PersistGate>
     </Provider>

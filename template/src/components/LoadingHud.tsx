@@ -1,5 +1,14 @@
 import React from 'react';
-import { ActivityIndicator, Animated, Dimensions } from 'react-native';
+import { ActivityIndicator, Dimensions } from 'react-native';
+import Animated, {
+  interpolate,
+  interpolateColor,
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
+} from 'react-native-reanimated';
 import EventEmitter, { EventTypes } from 'utils/EventEmitter';
 
 import { BackHandler } from './BackHandler';
@@ -19,7 +28,8 @@ export const LoadingHud = {
 
 export const LoadingHudProvider = () => {
   const [isFinishAnimation, setAnimationFinish] = React.useState(false);
-  const animation = React.useRef(new Animated.Value(0)).current;
+  // const animation = React.useRef(new Animated.Value(0)).current;
+  const animation = useSharedValue(0);
   const [hudCount, setHudCount] = React.useState(0);
   React.useEffect(() => {
     const increaseHudCount = () => {
@@ -37,45 +47,35 @@ export const LoadingHudProvider = () => {
   }, []);
 
   React.useEffect(() => {
+    const onAnimationFinished = () => {
+      'worklet';
+      runOnJS(setAnimationFinish)(true);
+    };
+
     if (hudCount > 0) {
       setAnimationFinish(false);
-      Animated.spring(animation, {
-        toValue: 1,
-        useNativeDriver: false,
-      }).start(() => {
-        setAnimationFinish(true);
-      });
+
+      animation.value = withSpring(1, undefined, onAnimationFinished);
     } else {
       setAnimationFinish(false);
-      Animated.spring(animation, {
-        toValue: 0,
-        useNativeDriver: false,
-      }).start(() => {
-        setAnimationFinish(true);
-      });
+      animation.value = withTiming(0, undefined, onAnimationFinished);
     }
   }, [animation, hudCount]);
+  const containerAnimatedStyle = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(animation.value, [0, 1], ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, .5)']),
+  }));
 
+  const popupAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY: interpolate(animation.value, [0, 1], [(height * 2) / 3, 0]),
+      },
+    ],
+  }));
   if (hudCount === 0 && isFinishAnimation) {
     return null;
   }
-  const containerAnimatedStyle = {
-    backgroundColor: animation.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, .5)'],
-    }),
-  };
 
-  const popupAnimatedStyle = {
-    transform: [
-      {
-        translateY: animation.interpolate({
-          inputRange: [0, 1],
-          outputRange: [(height * 2) / 3, 0],
-        }),
-      },
-    ],
-  };
   return (
     <Animated.View style={[styles.container, containerAnimatedStyle]}>
       <Animated.View style={[styles.popup, popupAnimatedStyle]}>

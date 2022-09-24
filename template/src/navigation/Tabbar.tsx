@@ -48,6 +48,7 @@ const TabBar = ({ navigation, state, descriptors }: Props) => {
         const icon = Tabs[name].icon;
         return (
           <TouchableOpacity
+            key={name}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}

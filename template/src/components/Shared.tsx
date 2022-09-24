@@ -22,6 +22,7 @@ export type SharedBoxProps = {
 };
 
 export type SharedTextProps = {
+  f12?: boolean;
   f16?: boolean;
   f18?: boolean;
   bold?: boolean;
@@ -29,6 +30,7 @@ export type SharedTextProps = {
   red?: boolean;
   brandPrimary?: boolean;
   primary?: boolean;
+  secondary?: boolean;
   center?: boolean;
   capitalize?: boolean;
 } & SharedBoxProps;
@@ -108,6 +110,9 @@ const makeBoxStyles = (colors: Theme) =>
 
 const makeTextStyles = (colors: Theme) =>
   StyleSheet.create({
+    f12: {
+      fontSize: 12,
+    },
     f16: {
       fontSize: 16,
     },
@@ -125,7 +130,10 @@ const makeTextStyles = (colors: Theme) =>
       color: colors.brandPrimary,
     },
     primary: {
-      color: colors.textPrimary,
+      color: colors.primaryText,
+    },
+    secondary: {
+      color: colors.secondaryText,
     },
     regular: {
       fontFamily: fonts.regular,

@@ -23,6 +23,6 @@ export const Icon = (props: Props) => {
 const makeStyles = (colors: Theme) =>
   StyleSheet.create({
     icon: {
-      color: colors.textPrimary,
+      color: colors.primaryText,
     },
   });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActionSheet, Container, Header, LoadingHud, Text, TouchableOpacity } from 'components';
+import { Dialog } from 'components/Dialog';
 import Toast from 'utils/Toast';
 
 const Tab1Screen = () => {
@@ -26,6 +27,45 @@ const Tab1Screen = () => {
                   Toast.show({
                     title: 'done',
                     message: 'cancel',
+                  });
+                },
+              },
+              {
+                text: 'Show dialog',
+                onPress: () => {
+                  Dialog.show({
+                    title: 'Hello you',
+                    message: 'cancel',
+                    buttons: [
+                      {
+                        text: 'Cancel',
+                        isCancel: true,
+                      },
+                      {
+                        text: 'Done',
+                      },
+                    ],
+                  });
+                },
+              },
+              {
+                text: 'Show dialog with input',
+                onPress: () => {
+                  Dialog.show({
+                    title: 'Hello you',
+                    message: 'cancel',
+                    buttons: [
+                      {
+                        text: 'Cancel',
+                        isCancel: true,
+                      },
+                      {
+                        text: 'Done',
+                      },
+                    ],
+                    inputProps: {
+                      placeholder: 'Enter your name',
+                    },
                   });
                 },
               },

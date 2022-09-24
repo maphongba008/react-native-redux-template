@@ -31,7 +31,7 @@ export const Image = (props: Props) => {
       onLoadStart={onLoadStart}>
       {loading && (
         <Box center style={styles.loadingView}>
-          <ActivityIndicator color={color || colors.textPrimary} />
+          <ActivityIndicator color={color || colors.primaryText} />
         </Box>
       )}
     </AnimatedFastImage>
